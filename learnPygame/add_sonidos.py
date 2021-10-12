@@ -3,9 +3,17 @@ import pygame
 #from pygame.locals import *
 import sys
 import time
+from pygame import mixer
+
 
 
 pygame.init()
+
+mixer.init() 
+
+mixer.music.load(r'C:\Users\SAMIR\Downloads\sonido_intergalactic_odyssey.ogg')
+mixer.music.play(-1) 
+#mixer.music.set_volume(1.0)
 
 W, H = 1000, 600
 
@@ -27,10 +35,18 @@ pygame.display.set_icon(icono)
 
 #FONDO DE LA PANTALLA
 fondo = pygame.image.load(r"IMAGENES\ciudad.png") 
-fondo2 = pygame.image.load(r'IMAGENES\ciudad2.png') 
 
 
 loadimage = pygame.image.load
+
+sound_arriba = loadimage(r'.\IMAGENES\SPRITES\volume_up.png')
+sound_abajo = loadimage(r'.\IMAGENES\SPRITES\volume_down.png')
+sound_mute = loadimage(r'.\IMAGENES\SPRITES\volume_muted.png')
+sound_max = loadimage(r'.\IMAGENES\SPRITES\volume_max.png')
+
+
+
+
 
 
 #PERSONAJE DEL JUEGO EN ESTADO QUIETO A LA DERECHA Y A LA IZQUIERDA
@@ -104,17 +120,17 @@ def loadPantalla() :
     global cuentapasos
     global x
     
-    x_relativa = x % fondo.get_rect().width
+    
     if px >= W // 2 :
 
         #fondo en movimiento
-        #x_relativa = x % fondo.get_rect().width
+        x_relativa = x % fondo.get_rect().width
         PANTALLA.blit(fondo, (x_relativa - fondo.get_rect().width, 0))
-            
-            
+        
+        
         if x_relativa < W :
 
-            PANTALLA.blit(fondo, (x_relativa, 0)) 
+            PANTALLA.blit(fondo, (x_relativa, 0))
 
         x -= 5
 
@@ -124,11 +140,7 @@ def loadPantalla() :
 
     else :
 
-        #  pygame.display.update()
-        print(x_relativa) 
-        PANTALLA.blit(fondo, (x_relativa - fondo.get_rect().width, 0))
-        PANTALLA.blit(fondo, (x_relativa, 0))  
-        #pygame.display.flip()
+        PANTALLA.blit(fondo, (0, 0))
 
         
 
@@ -179,6 +191,7 @@ clave = False
 
 while True :
 
+    
 
     for event in pygame.event.get() :
 
@@ -189,6 +202,10 @@ while True :
 
     #OPCION TECLA PULSADA
     keys = pygame.key.get_pressed()
+
+
+
+
 
     #TECLA A - MOVIMIENTO A LA IZQUIERDA
     if keys[pygame.K_a] and px > velocidad :
@@ -252,13 +269,37 @@ while True :
 
 
 
-    #LLAMAR A LA FUNCION DE ACTUALIZACION DE LA PANTALLA
-    loadPantalla() 
-    
+    if keys[pygame.K_UP] and mixer.music.get_volume() < 1.0 :
 
-    
+        mixer.music.set_volume(mixer.music.get_volume() + 0.01)
+        PANTALLA.blit(sound_arriba, (850, 25))
+
+
+    elif keys[pygame.K_UP] and mixer.music.get_volume() == 1.0 :
+
+        PANTALLA.blit(sound_max, (850, 25))
+
+
+
+
+    if keys[pygame.K_DOWN] and mixer.music.get_volume() > 0.0 :
+
+        mixer.music.set_volume(mixer.music.get_volume() - 0.01)
+        PANTALLA.blit(sound_abajo, (850, 25))
+
+    elif keys[pygame.K_DOWN] and f'{mixer.music.get_volume():.1f}' == '0.0' :
+
+        PANTALLA.blit(sound_mute, (850, 25))
+        
 
     pygame.display.update() 
-    RELOJ.tick(fps)
 
+    #LLAMAR A LA FUNCION DE ACTUALIZACION DE LA PANTALLA
+    loadPantalla()
+    RELOJ.tick(40)
+    
+
+    
+
+    #pygame.display.update() 
     

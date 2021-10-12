@@ -79,8 +79,8 @@ if __name__ == "__main__" :
 	
 	import sys
 	
-	print(can_fibo(int(sys.argv[1]))) 							
-
+	#print(can_fibo(int(sys.argv[1]))) 							
+	print(can_fibo(5))
 '''	 						
 print(fibo(25)) 	 	
 print(can_fibo(15))

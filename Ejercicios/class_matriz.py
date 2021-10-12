@@ -13,8 +13,8 @@ class Matriz :
 	
 	
 	def __init__(self, lista) :
+
 		
-	    
 	    valida = self.validaUna(lista)
 	    
 	    if valida == True :
@@ -29,9 +29,7 @@ class Matriz :
 	    	self.value = False
 	    
 	    	
-	    		
-	
-	 
+
 		    			
 	@classmethod
 	def validaUna(cls, lista) :

@@ -86,6 +86,16 @@ def Determinante( m ) :
 		
 			
 		column += 1
+
+	'''
+	for i in m :
+
+		for j in i :
+
+			print(j, end= ' - ')
+		
+		print()
+		'''
 		
 		
 	return signo * round(mul_diag(m), 5)
@@ -107,4 +117,14 @@ m = [
 	[0, 5, 0, 0] 	
 
 ] 
+
+m = [
+	[10, 2, 3, 4, 5],
+	[6, 7, 8, 9, 10],
+	[11, 12, 13, 14, 15],
+	[16, 17, 18, 19, 20],
+	[25, 22, 23, 24, 20]  
+]
+
+print(Determinante(m))
 

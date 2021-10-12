@@ -38,9 +38,9 @@ def rotar( m ) :
 def inversa( m ) :
 	
 	det = Determinante(m)
-	if det == 0 :
+	if det <= 0 :
 		return "No Es Posible Obtener La Inversa De La Matriz .. |m| = 0"
-	
+
 	
 	copia = deepcopy(m)
 	identida = identidad(len(m))
@@ -97,8 +97,19 @@ def inversa( m ) :
 					
 		
 			fila += 1
-			column += 1				
-	
+			column += 1			
+
+			print('++++++++++++++++++++++++++++++++++++++++++++++++++')
+
+			for i in copia :
+
+				for j in i :
+
+					print(j, end= ' - ')
+
+				print()
+
+			print('++++++++++++++++++++++++++++++++++++++++++++++++++')
 
 		
 	
@@ -132,28 +143,28 @@ def inversa( m ) :
 			
 				
 						
-													 
+												
 													
 	
 	for i in range(len(copia)) :
-		 for j in range(len(copia[0])) :
-		 	num = copia[i][j]
-		 	num_To_str = str(num)
-		 	
-		 	try :
-		 		ind = num_To_str.index(".")
-		 		decim = num_To_str[ind+1 : ind+6 ]
-		 		
-		 	except ValueError :
-		 		decim = None
-		 		
-		 		
-		 	if num == 0.0  or decim == "0" or decim == "00000" :
-		 			copia[i][j] = int(num)
-		 			
-		 	else :
-		 	
-		 			copia[i][j] = round(num , 5)	
+		for j in range(len(copia[0])) :
+			num = copia[i][j]
+			num_To_str = str(num)
+		
+			try :
+				ind = num_To_str.index(".")
+				decim = num_To_str[ind+1 : ind+6 ]
+		
+			except ValueError :
+				decim = None
+		
+
+			if num == 0.0  or decim == "0" or decim == "00000" :
+				copia[i][j] = int(num)
+		
+			else :
+
+				copia[i][j] = round(num , 5)	
 																												
 	invertida = []
 	for i in range(len(copia)) :
@@ -163,25 +174,32 @@ def inversa( m ) :
 	return "\n".join([str(i) for i in invertida])
 	
 
-	
-		
-			
-				
-					
-							
-m = [
-	[81, 521, 8 ],	
-	[7, 6, 30 ],
-	[842, 42, 8 ] 	
 
+
+
+
+
+m = [
+	[81, 521, 8, 8 ],	
+	[7, 6, 30, 3 ],
+	[842, 42, 8, 6 ] 	
+
+]
+
+	
+m = [
+	[10, 2, 3, 4, 5],
+	[6, 7, 8, 9, 10],
+	[11, 12, 13, 14, 15],
+	[16, 17, 18, 19, 20],
+	[25, 22, 23, 24, 20]  
 ]
 
 print("\n".join([str(i) for i in m]))
 
-print()  
+print('----------------------------------')  
 
 inv = inversa(m) 	
 
-print(inv)
 
 	

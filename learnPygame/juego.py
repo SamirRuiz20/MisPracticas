@@ -25,7 +25,7 @@ PANTALLA.fill(BLANCO)
 
 rectangulo1 = pygame.draw.rect(PANTALLA, ROJO, (100, 50, 100, 50))
 
-pygame.draw.line(PANTALLA, VERDE, (100, 104), (199, 104), 10)
+pygame.draw.line(PANTALLA, VERDE, (100, 104), (149, 104), 10)
 
 pygame.draw.circle(PANTALLA, NEGRO, (122, 250), 20, 0)
 

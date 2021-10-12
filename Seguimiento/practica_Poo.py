@@ -7,7 +7,7 @@ def opera( x, y ) :
 	def forward(a, b) :
 		
 		if isinstance(b, (int, Fraction )) :
-			print("__")
+			print("__21")
 			return x(a, b)
 			
 		elif isinstance(b, float) :
@@ -30,7 +30,7 @@ def opera( x, y ) :
 	def reverse(b, a) :
 		
 		if isinstance(a, nbs.Rational) :
-			print("_")
+			print("aqui")
 			return x(a, b)
 			
 		elif isinstance( a, nbs.Real ) :
@@ -56,6 +56,7 @@ def opera( x, y ) :
 def _add( a, b) :
 	
 	''' Return La Fraccion a/b '''
+	print('---------------bbbbbbbbbbbbbbbbbbbbbbb')
 	
 	return Fraction( a.numerator*b.denominator + b.numerator*a.denominator )
 
@@ -63,4 +64,4 @@ def _add( a, b) :
 
 __add__, __radd__ = opera(_add, operator.add)
 
-print(__radd__.__doc__)
+print(__radd__(7, 5))

@@ -4,7 +4,9 @@
 import os
 import random
 from time import sleep
-from tableros import tablero_matriz as tablero
+
+#from tableros import tablero_matriz as tablero
+from Ejercicios.tableros import tablero_matriz as tablero
 from copy import deepcopy
 
 

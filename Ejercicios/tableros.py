@@ -133,4 +133,4 @@ def tablero_matriz(t) :
 t = [["^_^"] * 3] * 3
 l = len(t)
 
-tablero_matriz(t)
+tablero_per(l, t)
